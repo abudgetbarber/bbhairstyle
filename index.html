@@ -266,7 +266,7 @@ footer strong { color:var(--yellow); }
 
     <!-- Generate -->
     <button class="gen-btn" id="genBtn" onclick="generate()" disabled>
-      <span id="genBtnLabel">Generate 9-Hairstyle Grid</span>
+      <span id="genBtnLabel">Generate My AI Hairstyles Grid</span>
     </button>
 
   </aside>
@@ -287,7 +287,7 @@ footer strong { color:var(--yellow); }
 </div>
 
 <footer>
-  <strong>Budget Barber</strong> · Digital Men's Salon · Powered by Google Gemini 2.0 Flash
+  <strong>Budget Barber</strong> · Digital Men's Salon · AI Hairstyles
 </footer>
 
 <script>
@@ -539,7 +539,7 @@ GOAL: Create a barber-grade haircut reference grid where the uploaded face is ID
       showStatus('error', '⚠ ' + err.message, false);
     } finally {
       btn.disabled = false;
-      label.textContent = 'Generate 9-Hairstyle Grid';
+      label.textContent = 'Generate My AI Hairstyle';
       checkReady();
     }
   }
