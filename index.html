@@ -21,12 +21,48 @@ body { font-family:'Barlow',sans-serif; background:var(--off-white); color:var(-
 
 /* HEADER */
 header { background:var(--white); border-bottom:3px solid var(--yellow); padding:0 2rem; height:70px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 2px 16px rgba(11,61,46,0.08); }
+
+/* ── NEW LOGO matching the screenshot ── */
 .logo-wrap { display:flex; align-items:center; gap:14px; }
-.logo-block { background:var(--yellow); padding:5px 11px 4px; display:flex; flex-direction:column; gap:3px; border-radius:3px; }
-.logo-budget { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--green); letter-spacing:0.04em; line-height:1; }
-.logo-barber-row { background:var(--green); padding:2px 6px; border-radius:2px; }
-.logo-barber { font-family:'Bebas Neue',sans-serif; font-size:14px; color:var(--yellow); letter-spacing:0.14em; line-height:1; }
-.logo-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); margin-top:1px; }
+.logo-badge {
+  background: var(--yellow);
+  border-radius: 10px;
+  padding: 8px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 3px solid var(--yellow-md);
+  box-shadow: 0 2px 8px rgba(11,61,46,0.18);
+}
+.logo-badge-top {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: var(--green);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+}
+.logo-badge-divider {
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
+  margin: 0 -2px;
+}
+.logo-badge-bottom {
+  background: var(--green);
+  border-radius: 5px;
+  padding: 3px 6px;
+  text-align: center;
+}
+.logo-badge-bottom span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--yellow);
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+.logo-text { display:flex; flex-direction:column; gap:2px; }
+.logo-sub { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); }
 .logo-desc { font-size:12px; color:var(--gray-dk); font-weight:300; }
 .gemini-badge { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:var(--green); background:var(--green-lt); border:1px solid #b8d8c8; border-radius:20px; padding:4px 12px; }
 
@@ -38,17 +74,14 @@ header { background:var(--white); border-bottom:3px solid var(--yellow); padding
 .section-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-mid); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
 .section-label::before { content:''; display:inline-block; width:3px; height:12px; background:var(--yellow); border-radius:2px; }
 
-/* Gender pills */
-.pills { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.pill { padding:12px 14px; border:1.5px solid var(--gray); border-radius:var(--radius); cursor:pointer; background:var(--gray-lt); transition:all 0.15s; }
-.pill-title { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:2px; }
-.pill-sub { font-size:11px; color:var(--gray-dk); }
-.pill:hover { border-color:var(--green); }
-.pill.active { background:var(--green); border-color:var(--green); }
-.pill.active .pill-title { color:var(--yellow); }
-.pill.active .pill-sub { color:#a8c8b8; }
+/* Image source area */
+.img-source-tabs { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--gray); border-radius:var(--radius); overflow:hidden; margin-bottom:10px; }
+.img-tab { padding:9px 12px; background:var(--gray-lt); border:none; cursor:pointer; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-dk); transition:all 0.15s; display:flex; align-items:center; justify-content:center; gap:6px; }
+.img-tab:first-child { border-right:1px solid var(--gray); }
+.img-tab.active { background:var(--green); color:var(--yellow); }
+.img-tab svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.75; flex-shrink:0; }
 
-/* Upload */
+/* Upload zone */
 .upload-zone { border:2px dashed var(--gray); border-radius:var(--radius-lg); padding:2rem 1rem; text-align:center; cursor:pointer; position:relative; transition:all 0.18s; background:var(--gray-lt); }
 .upload-zone:hover { border-color:var(--green-mid); background:var(--green-lt); }
 .upload-zone input { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
@@ -56,6 +89,24 @@ header { background:var(--white); border-bottom:3px solid var(--yellow); padding
 .upload-icon svg { width:22px; height:22px; stroke:var(--green-mid); fill:none; stroke-width:1.75; }
 .upload-zone h4 { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:4px; }
 .upload-zone p { font-size:12px; color:var(--gray-dk); }
+
+/* Camera zone */
+.camera-zone { border:2px solid var(--gray); border-radius:var(--radius-lg); overflow:hidden; background:var(--ink); position:relative; display:flex; flex-direction:column; align-items:center; }
+.camera-zone video { width:100%; max-height:220px; object-fit:cover; display:block; }
+.camera-zone canvas { display:none; }
+.camera-controls { display:flex; gap:8px; padding:10px; width:100%; background:rgba(11,61,46,0.85); justify-content:center; }
+.cam-btn { height:38px; padding:0 16px; border:none; border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:6px; }
+.cam-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; }
+.cam-btn-snap { background:var(--yellow); color:var(--green); }
+.cam-btn-snap:hover { background:var(--yellow-md); }
+.cam-btn-flip { background:rgba(255,255,255,0.12); color:var(--white); }
+.cam-btn-flip:hover { background:rgba(255,255,255,0.22); }
+.camera-placeholder { padding:2.5rem 1rem; text-align:center; width:100%; }
+.camera-placeholder svg { width:44px; height:44px; stroke:var(--gray); fill:none; stroke-width:1.5; margin-bottom:10px; }
+.camera-placeholder p { font-size:12px; color:var(--gray); }
+.cam-start-btn { margin-top:10px; height:36px; padding:0 18px; background:var(--green-mid); color:var(--yellow); border:none; border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; }
+.cam-start-btn:hover { background:var(--green); }
+.cam-err { font-size:12px; color:#c0392b; text-align:center; padding:8px 12px; background:#fbeae8; border-radius:var(--radius); margin-top:8px; }
 
 /* Preview card */
 .preview-card { display:flex; align-items:center; gap:12px; background:var(--green-lt); border:1.5px solid #b8d8c8; border-radius:var(--radius-lg); padding:10px 12px; animation:fadeIn 0.2s ease; }
@@ -128,11 +179,13 @@ footer strong { color:var(--yellow); }
 
 <header>
   <div class="logo-wrap">
-    <div class="logo-block">
-      <span class="logo-budget">BUDGET</span>
-      <div class="logo-barber-row"><span class="logo-barber">BARBER</span></div>
+    <!-- Logo matching the screenshot: yellow rounded box, BUDGET on top, dark divider, BARBER on green bar -->
+    <div class="logo-badge">
+      <div class="logo-badge-top">BUDGET</div>
+      <div class="logo-badge-divider"></div>
+      <div class="logo-badge-bottom"><span>BARBER</span></div>
     </div>
-    <div>
+    <div class="logo-text">
       <div class="logo-sub">Digital Men's Salon</div>
       <div class="logo-desc">AI Haircut Reference Generator</div>
     </div>
@@ -143,32 +196,63 @@ footer strong { color:var(--yellow); }
 <div class="page">
   <aside class="panel">
 
-    <!-- Step 1: Gender -->
+    <!-- Portrait input -->
     <div>
-      <div class="section-label">Step 1 — Style Variant</div>
-      <div class="pills">
-        <div class="pill active" id="opt-male" onclick="setGender('male')">
-          <div class="pill-title">Male</div>
-          <div class="pill-sub">Fades · tapers · barbershop</div>
-        </div>
-        <div class="pill" id="opt-female" onclick="setGender('female')">
-          <div class="pill-title">Female</div>
-          <div class="pill-sub">Bobs · waves · braids</div>
-        </div>
-      </div>
-    </div>
+      <div class="section-label">Your Portrait</div>
 
-    <!-- Step 2: Upload -->
-    <div>
-      <div class="section-label">Step 2 — Upload Portrait</div>
-      <div class="upload-zone" id="uploadZone">
-        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" onchange="handleFile(event)"/>
-        <div class="upload-icon">
+      <!-- Tab switcher: Camera | Upload -->
+      <div class="img-source-tabs">
+        <button class="img-tab active" id="tab-camera" onclick="switchTab('camera')">
+          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Camera
+        </button>
+        <button class="img-tab" id="tab-upload" onclick="switchTab('upload')">
           <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        </div>
-        <h4>Drop or click to upload</h4>
-        <p>Clear front-facing portrait · JPG / PNG / WebP · Max 10MB</p>
+          Upload File
+        </button>
       </div>
+
+      <!-- Camera panel -->
+      <div id="cameraPanel">
+        <div class="camera-zone" id="cameraZone">
+          <div class="camera-placeholder" id="cameraPlaceholder">
+            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <p>Click below to start your camera</p>
+            <button class="cam-start-btn" onclick="startCamera()">Start Camera</button>
+          </div>
+          <video id="cameraFeed" autoplay playsinline style="display:none; width:100%; max-height:220px; object-fit:cover;"></video>
+          <canvas id="snapCanvas" style="display:none;"></canvas>
+          <div class="camera-controls" id="cameraControls" style="display:none;">
+            <button class="cam-btn cam-btn-snap" onclick="snapPhoto()">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" style="fill:currentColor"/></svg>
+              Capture
+            </button>
+            <button class="cam-btn cam-btn-flip" onclick="flipCamera()">
+              <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              Flip
+            </button>
+            <button class="cam-btn cam-btn-flip" onclick="stopCamera()">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Stop
+            </button>
+          </div>
+        </div>
+        <div id="cameraError" style="display:none;" class="cam-err"></div>
+      </div>
+
+      <!-- Upload panel -->
+      <div id="uploadPanel" style="display:none;">
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" onchange="handleFile(event)"/>
+          <div class="upload-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h4>Drop or click to upload</h4>
+          <p>Clear front-facing portrait · JPG / PNG / WebP · Max 10MB</p>
+        </div>
+      </div>
+
+      <!-- Preview (shared) -->
       <div id="previewSection" style="display:none; margin-top:8px;"></div>
     </div>
 
@@ -195,7 +279,7 @@ footer strong { color:var(--yellow); }
         <div class="eg-cell"></div><div class="eg-cell"></div><div class="eg-cell"></div>
       </div>
       <h3>Your Barber Grid</h3>
-      <p>Choose a style variant, upload a clear portrait, and generate your 9-hairstyle barber reference.</p>
+      <p>Capture or upload a clear front-facing portrait and generate your 9-hairstyle barber reference.</p>
     </div>
     <div id="statusArea" style="display:none; width:100%; max-width:540px;"></div>
     <div id="resultArea" style="display:none;"></div>
@@ -214,8 +298,7 @@ footer strong { color:var(--yellow); }
   const WORKER_URL = "https://thirsty-dodo-71.abudgetbarber.deno.net/";
   // ============================================================
 
-  const PROMPTS = {
-    male: `Use the uploaded image as a STRICT, NON-NEGOTIABLE identity reference.
+  const PROMPT = `Use the uploaded image as a STRICT, NON-NEGOTIABLE identity reference.
 
 ABSOLUTE FACE LOCK (HIGHEST PRIORITY):
 - The face in the output MUST be pixel-identical to the uploaded image
@@ -262,57 +345,15 @@ ABSOLUTE RESTRICTIONS:
 - NO background changes
 - NO makeup or facial changes unless present in the original image
 
-GOAL: Create a barber-grade haircut reference grid where the uploaded face is IDENTICAL in all 9 tiles and ONLY the hairstyle changes.`,
+GOAL: Create a barber-grade haircut reference grid where the uploaded face is IDENTICAL in all 9 tiles and ONLY the hairstyle changes.`;
 
-    female: `Use the uploaded image as a STRICT, NON-NEGOTIABLE identity reference.
-
-ABSOLUTE FACE LOCK (HIGHEST PRIORITY):
-- The face in the output MUST be pixel-identical to the uploaded image
-- SAME facial geometry, SAME skin texture, SAME pores, SAME moles, SAME asymmetry
-- SAME expression, SAME head tilt, SAME eye direction
-- NO beautification, NO symmetry correction, NO aging or de-aging
-- NO gender change, NO facial feature enhancement
-- NO lighting changes that alter facial appearance
-
-FIRST (INTERNAL STEP ONLY - DO NOT OUTPUT TEXT):
-Analyze the uploaded face to determine face shape, hair density, texture, and growth direction.
-
-SECOND (FINAL OUTPUT - IMAGE ONLY):
-Generate ONE single vertical 9:16, true-4K composite image containing a 3x3 grid.
-
-GRID RULES:
-- 9 UNIQUE hairstyles (no repeats)
-- Hairstyles applied realistically while preserving the EXACT SAME FACE
-- Hair is the ONLY editable region
-- Face, skin tone, shadows, proportions MUST remain unchanged in every tile
-
-STRICT CONSISTENCY REQUIREMENTS:
-- SAME pose, SAME camera angle, SAME focal length
-- SAME background, SAME lighting direction and intensity
-- SAME facial expression across all 9 tiles
-
-HAIRSTYLE VARIATION RULES (Female):
-- Mix pixie cut, bob, lob, shoulder-length layers, beach waves, straight blowout, updo, curtain bangs, braided styles
-- Salon-grade and youthful styles
-- Natural hairlines and realistic parting
-- NO wigs, NO fantasy volume, NO AI over-styling
-
-TECHNICAL REQUIREMENTS:
-- Vertical 9:16 layout, True 4K clarity
-- Photorealistic hair texture and shadows
-
-ABSOLUTE RESTRICTIONS:
-- OUTPUT IMAGE ONLY
-- NO text, captions, labels, or explanations
-- NO background changes
-
-GOAL: Create a salon-grade haircut reference grid where the uploaded face is IDENTICAL in all 9 tiles and ONLY the hairstyle changes.`
-  };
-
-  let gender = 'male';
   let imageBase64 = null;
   let imageMime = null;
   let lastDataUrl = null;
+
+  // ── Camera state ──
+  let stream = null;
+  let facingMode = 'user'; // front camera by default
 
   function setGender(g) {
     gender = g;
@@ -321,6 +362,67 @@ GOAL: Create a salon-grade haircut reference grid where the uploaded face is IDE
     document.getElementById('promptText').textContent = PROMPTS[gender];
   }
 
+  // ── Tab switching ──
+  function switchTab(tab) {
+    const isCamera = tab === 'camera';
+    document.getElementById('tab-camera').className = 'img-tab' + (isCamera ? ' active' : '');
+    document.getElementById('tab-upload').className = 'img-tab' + (!isCamera ? ' active' : '');
+    document.getElementById('cameraPanel').style.display = isCamera ? 'block' : 'none';
+    document.getElementById('uploadPanel').style.display = isCamera ? 'none' : 'block';
+    if (!isCamera) stopCamera();
+  }
+
+  // ── Camera ──
+  async function startCamera() {
+    document.getElementById('cameraError').style.display = 'none';
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode, width: { ideal: 1280 }, height: { ideal: 720 } },
+        audio: false
+      });
+      const video = document.getElementById('cameraFeed');
+      video.srcObject = stream;
+      video.style.display = 'block';
+      document.getElementById('cameraPlaceholder').style.display = 'none';
+      document.getElementById('cameraControls').style.display = 'flex';
+    } catch (err) {
+      const errEl = document.getElementById('cameraError');
+      errEl.style.display = 'block';
+      errEl.textContent = err.name === 'NotAllowedError'
+        ? '⚠ Camera access denied. Please allow camera permission and try again.'
+        : '⚠ Could not access camera: ' + err.message;
+    }
+  }
+
+  function stopCamera() {
+    if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+    const video = document.getElementById('cameraFeed');
+    video.srcObject = null;
+    video.style.display = 'none';
+    document.getElementById('cameraPlaceholder').style.display = 'block';
+    document.getElementById('cameraControls').style.display = 'none';
+  }
+
+  async function flipCamera() {
+    facingMode = facingMode === 'user' ? 'environment' : 'user';
+    stopCamera();
+    await startCamera();
+  }
+
+  function snapPhoto() {
+    const video = document.getElementById('cameraFeed');
+    const canvas = document.getElementById('snapCanvas');
+    canvas.width  = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+    imageBase64 = dataUrl.split(',')[1];
+    imageMime   = 'image/jpeg';
+    stopCamera();
+    showPreview(dataUrl, 'Camera Snapshot');
+  }
+
+  // ── File upload ──
   function handleFile(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -330,28 +432,30 @@ GOAL: Create a salon-grade haircut reference grid where the uploaded face is IDE
       const dataUrl = ev.target.result;
       imageBase64 = dataUrl.split(',')[1];
       imageMime   = file.type || 'image/jpeg';
-      document.getElementById('uploadZone').style.display = 'none';
-      const sec = document.getElementById('previewSection');
-      sec.style.display = 'block';
-      sec.innerHTML = `<div class="preview-card">
-        <img src="${dataUrl}" alt="preview"/>
-        <div class="preview-info">
-          <p>${file.name}</p>
-          <span>✓ Ready to generate</span>
-        </div>
-        <button class="rm-btn" onclick="removeImage()">×</button>
-      </div>`;
-      document.getElementById('promptText').textContent = PROMPTS[gender];
-      document.getElementById('promptAccordion').style.display = 'block';
-      checkReady();
+      showPreview(dataUrl, file.name);
     };
     reader.readAsDataURL(file);
+  }
+
+  function showPreview(dataUrl, name) {
+    const sec = document.getElementById('previewSection');
+    sec.style.display = 'block';
+    sec.innerHTML = `<div class="preview-card">
+      <img src="${dataUrl}" alt="preview"/>
+      <div class="preview-info">
+        <p>${name}</p>
+        <span>✓ Ready to generate</span>
+      </div>
+      <button class="rm-btn" onclick="removeImage()">×</button>
+    </div>`;
+    document.getElementById('promptText').textContent = PROMPT;
+    document.getElementById('promptAccordion').style.display = 'block';
+    checkReady();
   }
 
   function removeImage() {
     imageBase64 = null; imageMime = null;
     document.getElementById('previewSection').style.display = 'none';
-    document.getElementById('uploadZone').style.display = 'block';
     document.getElementById('fileInput').value = '';
     document.getElementById('promptAccordion').style.display = 'none';
     resetOutput(); checkReady();
@@ -391,7 +495,7 @@ GOAL: Create a salon-grade haircut reference grid where the uploaded face is IDE
       const payload = {
         contents: [{
           parts: [
-            { text: PROMPTS[gender] },
+            { text: PROMPT },
             { inline_data: { mime_type: imageMime, data: imageBase64 } }
           ]
         }],
@@ -401,7 +505,7 @@ GOAL: Create a salon-grade haircut reference grid where the uploaded face is IDE
       const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ payload })   // No API key sent from browser
+        body: JSON.stringify({ payload })
       });
 
       const data = await res.json();
