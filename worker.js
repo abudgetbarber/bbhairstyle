@@ -1,9 +1,17 @@
-// Cloudflare Worker — Gemini API Proxy
-// Deploy at: https://workers.cloudflare.com
+// ============================================================
+// Budget Barber — Cloudflare Worker
+// 
+// SETUP:
+// 1. Deploy this worker on https://workers.cloudflare.com
+// 2. Go to Worker → Settings → Variables and Secrets
+// 3. Add a variable:  GEMINI_API_KEY = AIza...your key here
+// 4. Save and deploy
+// ============================================================
 
 export default {
-  async fetch(request) {
-    // Allow CORS preflight
+  async fetch(request, env) {
+
+    // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
@@ -18,18 +26,28 @@ export default {
       return new Response('Method not allowed', { status: 405 });
     }
 
+    // API key lives on the server — never sent from browser
+    const GEMINI_API_KEY = env.GEMINI_API_KEY;
+
+    if (!GEMINI_API_KEY) {
+      return new Response(JSON.stringify({
+        error: 'GEMINI_API_KEY not set. Go to Worker → Settings → Variables and add it.'
+      }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+    }
+
     try {
       const body = await request.json();
-      const { apiKey, payload } = body;
+      const { payload } = body;  // No apiKey from browser — we use env variable
 
-      if (!apiKey) {
-        return new Response(JSON.stringify({ error: 'No API key provided' }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-        });
-      }
-
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${apiKey}`;
+      const geminiUrl =
+        `https://generativelanguage.googleapis.com/v1beta/models/` +
+        `gemini-2.0-flash-preview-image-generation:generateContent?key=${GEMINI_API_KEY}`;
 
       const geminiRes = await fetch(geminiUrl, {
         method: 'POST',
@@ -50,7 +68,10 @@ export default {
     } catch (err) {
       return new Response(JSON.stringify({ error: err.message }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       });
     }
   }
