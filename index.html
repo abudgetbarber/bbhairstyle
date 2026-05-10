@@ -300,6 +300,7 @@ footer strong { color:var(--yellow); }
 
   const PROMPT = `Use the uploaded image as a STRICT, NON-NEGOTIABLE identity reference.
 
+ABSOLUTE RULE: The subject is MALE. All 9 tiles must show a MALE person with a masculine men's haircut.
 ABSOLUTE FACE LOCK (HIGHEST PRIORITY):
 - The face in the output MUST be pixel-identical to the uploaded image
 - SAME facial geometry, SAME skin texture, SAME pores, SAME moles, SAME asymmetry
@@ -344,6 +345,9 @@ ABSOLUTE RESTRICTIONS:
 - NO text, captions, labels, or explanations
 - NO background changes
 - NO makeup or facial changes unless present in the original image
+- NO gender change — subject stays MALE in every single tile
+- NO feminine hairstyles (no curly voluminous styles, no bob cuts, no beach waves)
+- NO softening of jawline or masculine facial structure
 
 GOAL: Create a barber-grade haircut reference grid where the uploaded face is IDENTICAL in all 9 tiles and ONLY the hairstyle changes.`;
 
